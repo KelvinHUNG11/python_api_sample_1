@@ -4,4 +4,18 @@ info:
   description: this is a sample python API server 
   version: 1.0.0
 servers: 
-  - url: http://localhost:3000/api/v2
+  - url: http://localhost:1001/api/v1
+
+paths:
+  /call_sample_api:
+    post:
+      parameters:
+        - name: token
+          in: header
+          description: token
+          required: true
+          schema: 
+            type: string
+      responses: 
+        200:
+          description: Success
