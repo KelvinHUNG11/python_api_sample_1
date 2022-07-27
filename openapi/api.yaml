@@ -1,0 +1,7 @@
+openapi: 3.0.3
+info:
+  title: sample_api_server
+  description: this is a sample python API server 
+  version: 1.0.0
+servers: 
+  - url: http://localhost:3000/api/v2
