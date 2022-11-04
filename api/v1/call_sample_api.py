@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from api.v1.v2.fruit import *
 import logging
 import flask
 from flask import request, jsonify, Response
@@ -10,6 +11,7 @@ def post():
         logging.info("The sample API server is called at: " + str(startTime))
 
         ##proceed your tasks
+        testing_program_classification()
 
         endTime = datetime.now()
         logging.info("Completion time at: " + str(endTime))
