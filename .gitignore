@@ -1,0 +1,9 @@
+.idea
+.DS_Store
+docker-compose.yml
+Pipfile.lock
+images
+.vscode
+requirements.txt
+.devcontainer/
+__pycache__/
