@@ -13,6 +13,9 @@ ipykernel = "*"
 "Pillow" = "*"
 "opencv-python" = "*"
 "psycopg2" = "*"
+"pandas" = "*"
+"openpyxl" = "*"
+"flaml" = "*"
 
 [requires]
 python_version = "3.9"

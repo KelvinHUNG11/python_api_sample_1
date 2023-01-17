@@ -2,6 +2,7 @@ import json
 from datetime import datetime
 import logging
 import flask
+from api.v1.main import *
 from flask import request, jsonify, Response
 
 def post():
@@ -10,6 +11,7 @@ def post():
         logging.info("The sample API server is called at: " + str(startTime))
 
         ##proceed your tasks
+        ref_datetime = test_func(startTime)
 
         endTime = datetime.now()
         logging.info("Completion time at: " + str(endTime))
