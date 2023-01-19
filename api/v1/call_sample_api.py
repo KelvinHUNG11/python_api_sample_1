@@ -2,6 +2,8 @@ import json
 from datetime import datetime
 import logging
 import flask
+import os
+import time
 from api.v1.main import *
 from flask import request, jsonify, Response
 
@@ -17,12 +19,18 @@ def post():
         print("body:", body)
 
         if request.method == 'POST':
-            f = request.files['file']
-            f.save((f.filename))
-            print("file:", f)
 
-        ##proceed your tasks
-        #ref_datetime = test_func(startTime)
+            ##Get the file sent from API calling
+            f = request.files['file']
+
+            ##Set the path to store the uploaded file
+            os.chdir(os.getcwd() + '/dataset')
+
+            ##Store the file locally
+            f.save((f.filename))
+
+            ##proceed your tasks
+            ref_datetime = test_func(startTime)
 
         endTime = datetime.now()
         logging.info("Completion time at: " + str(endTime))
