@@ -1,5 +1,6 @@
 import pandas as pd
 import logging
+import os
 from sklearn.metrics import mean_absolute_percentage_error
 from sklearn.model_selection import train_test_split
 from flaml import AutoML
@@ -9,7 +10,7 @@ def test_func(startTime):
 
     try:
         #!pip install openpyxl
-        train = pd.read_excel('../python_api_sample_1/dataset/Date_Fruit_Datasets.xlsx')
+        train = pd.read_excel( os.getcwd() + '/Date_Fruit_Datasets.xlsx')
         #train.head()
         print("train.head():", train.head())
         print("")
