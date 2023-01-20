@@ -1,16 +1,17 @@
 import pandas as pd
 import logging
 import os
+import pathlib
 from sklearn.metrics import mean_absolute_percentage_error
 from sklearn.model_selection import train_test_split
 from flaml import AutoML
 from sklearn.metrics import classification_report
 
-def test_func(startTime):
+def test_func(path_string):
 
     try:
         #!pip install openpyxl
-        train = pd.read_excel( os.getcwd() + '/Date_Fruit_Datasets.xlsx')
+        train = pd.read_excel(path_string)
         #train.head()
         print("train.head():", train.head())
         print("")
@@ -76,4 +77,4 @@ def test_func(startTime):
 
     except Exception as err:
         logging.error(err)
-    return startTime
+    return 

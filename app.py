@@ -12,6 +12,7 @@ logging.basicConfig(level = logging.INFO)
 
 app = connexion.FlaskApp(__name__, specification_dir = "openapi/")
 app.add_api("api.yaml", resolver = RestyResolver('api.v1'))
+app.app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
 CORS(app.app)
 
 app.run(port = int (os.environ["PORT"]), server = 'gevent')

@@ -16,7 +16,7 @@ def post():
         startTime = datetime.now()
         logging.info("The sample API server is called at: " + str(startTime))
 
-        ACCEPTED_FILE_TYPE = ['.xlsx', '.csv']
+        ACCEPTED_FILE_TYPE = ['.xlsx', '.xls', '.csv']
 
         if request.method == 'POST':
 
@@ -26,11 +26,16 @@ def post():
             ##Set the path to store the uploaded file
             os.chdir(os.getcwd() + '/dataset')
 
+            ##Store the file locally
+            f.save((f.filename))
+
             ##Check the extension of the uploaded file
-            file_type = pathlib.Path(f.filename).suffixes # ['.bar', '.tar', '.gz']
+            file_path = pathlib.Path(f.filename)
+            file_type = file_path.suffixes # ['.bar', '.tar', '.gz']
 
             ##Check the size of the uploaded file
-            file_size = os.stat(os.getcwd() + '/Date_Fruit_Datasets.xlsx').st_size
+            path_string = str(os.getcwd()) + '/' + str(file_path)
+            file_size = os.stat(path_string).st_size
 
             if (file_type[0] not in ACCEPTED_FILE_TYPE or file_size > 1000000):
 
@@ -38,11 +43,8 @@ def post():
                 
                 return response
 
-            ##Store the file locally
-            f.save((f.filename))
-
             ##proceed your tasks
-            ##ref_datetime = test_func(startTime)
+            ref_datetime = test_func(path_string)
 
         endTime = datetime.now()
         logging.info("Completion time at: " + str(endTime))
