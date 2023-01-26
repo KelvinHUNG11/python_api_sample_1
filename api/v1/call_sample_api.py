@@ -16,7 +16,8 @@ def post():
         startTime = datetime.now()
         logging.info("The sample API server is called at: " + str(startTime))
 
-        ACCEPTED_FILE_TYPE = ['.xlsx', '.xls', '.csv']
+        ##Only file type == csv is accepted
+        ACCEPTED_FILE_TYPE = ['.csv']
 
         if request.method == 'POST':
 
@@ -30,9 +31,11 @@ def post():
             f.save((f.filename))
 
             ##Check the extension of the uploaded file
+            print("Checkpoint 0")
             file_path = pathlib.Path(f.filename)
             file_type = file_path.suffixes # ['.bar', '.tar', '.gz']
 
+            print("Checkpoint 1")
             ##Check the size of the uploaded file
             path_string = str(os.getcwd()) + '/' + str(file_path)
             file_size = os.stat(path_string).st_size
@@ -44,6 +47,7 @@ def post():
                 return response
 
             ##proceed your tasks
+            print("Checkpoint 2")
             ref_datetime = test_func(path_string)
 
         endTime = datetime.now()
