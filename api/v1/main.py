@@ -8,7 +8,7 @@ from flaml import AutoML
 from sklearn.metrics import classification_report
 import pickle
 
-def test_func(path_string):
+def train_model(path_string):
 
     try:
         #!pip install openpyxl
@@ -82,6 +82,32 @@ def test_func(path_string):
         print("df.head():", df.head())
         print("")
 
+    except Exception as err:
+        logging.error(err)
+    return 
+
+
+def test_model(path_string):
+
+    try:
+        #!pip install openpyxl
+        test = pd.read_csv(path_string)
+
+        ##Drop invalid row(s)
+        test.dropna()
+
+        ##To load the trained model called "automl.pkl"
+        automl = pickle.load(open('automl.pkl', 'rb'))
+        logging.info("Model called successfully")
+        y_pred = automl.predict(test)
+
+        ##Update predicted results to the file
+        for i in range(len(y_pred)):
+            # updating the column value/data
+            test.loc[i, 'Class'] = y_pred[i]
+  
+        # writing into the file
+        test.to_csv(path_string, index=False)
 
     except Exception as err:
         logging.error(err)
