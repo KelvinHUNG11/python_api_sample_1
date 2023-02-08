@@ -25,7 +25,7 @@ paths:
   /get_predicted_file:
     post:
       parameters:
-        - name: token_2
+        - name: token
           in: header
           description: token
           required: true
