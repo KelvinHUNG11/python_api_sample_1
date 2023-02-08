@@ -19,3 +19,20 @@ paths:
       responses: 
         200:
           description: Success
+        500:
+          description: Internal Server Error
+
+  /get_predicted_file:
+    post:
+      parameters:
+        - name: token_2
+          in: header
+          description: token
+          required: true
+          schema: 
+            type: string
+      responses: 
+        200:
+          description: Success
+        500:
+          description: Internal Server Error

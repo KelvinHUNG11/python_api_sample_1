@@ -71,15 +71,15 @@ def train_model(path_string):
         print("")
 
         test_=test.drop('Class',axis=1)
-        print("test_.head():", test_.head())
+        ##print("test_.head():", test_.head())
         print("")
 
         y_pred = automl.predict(test_)
-        print("y_pred[:5]:", y_pred[:5])
+        ##print("y_pred[:5]:", y_pred[:5])
         print("")
 
         df = pd.DataFrame(y_pred,columns=['Class'])
-        print("df.head():", df.head())
+        ##print("df.head():", df.head())
         print("")
 
     except Exception as err:
