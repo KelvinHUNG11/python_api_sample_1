@@ -7,7 +7,6 @@ from flask_cors import CORS
 from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
 
-
 logging.basicConfig(level = logging.INFO)
 
 app = connexion.FlaskApp(__name__, specification_dir = "openapi/")
