@@ -12,8 +12,6 @@ def search():
         existing_path = os.getcwd()
         
         os.chdir(os.getcwd() + '/dataset')
-
-        ##response = Response(json.dumps({'Success':'true'}), 200, mimetype = 'application/json')
         
         response = send_file(os.getcwd() + "/Date_Fruit_Datasets_test.csv", 
         mimetype='text/csv',
