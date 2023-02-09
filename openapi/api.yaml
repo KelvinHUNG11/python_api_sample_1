@@ -23,12 +23,12 @@ paths:
           description: Internal Server Error
 
   /get_predicted_file:
-    post:
+    get:
       parameters:
         - name: token
           in: header
           description: token
-          required: true
+          required: false
           schema: 
             type: string
       responses: 
