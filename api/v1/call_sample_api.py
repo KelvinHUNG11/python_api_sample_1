@@ -1,9 +1,8 @@
 import json
 from datetime import datetime
 import logging
-import flask
 import os
-import time
+import csv
 import pathlib
 from api.v1.main import *
 from flask import request, jsonify, Response
@@ -56,6 +55,15 @@ def post():
                 
                 return response
 
+            ##Check the columns of the two uploaded files
+            result = check_uploaded_files(path_string, path_string_test)
+
+            if (result == 'mismatched'):
+
+                response = Response(json.dumps({'Response':'Mismatch columns of traning and testing files are found'}), 200, mimetype = 'application/json')
+
+                return response
+
             ##proceed model training session
             logging.info("Model training started at: " + str(datetime.now()))
             train_model(path_string)
@@ -72,6 +80,7 @@ def post():
         os.chdir(existing_path)
 
         response = Response(json.dumps({'Success':'true'}), 200, mimetype = 'application/json')
+
         return response
 
     except Exception as e:

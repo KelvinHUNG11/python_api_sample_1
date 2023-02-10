@@ -92,7 +92,6 @@ def train_model(path_string):
         logging.error(err)
     return 
 
-
 def test_model(path_string):
 
     try:
@@ -117,4 +116,35 @@ def test_model(path_string):
 
     except Exception as err:
         logging.error(err)
+    return 
+
+def check_uploaded_files(path_string_file_train, path_string_file_test):
+
+    try:
+        #!pip install openpyxl
+        train_file = pd.read_excel(path_string_file_train)
+
+        temp_train_column = []
+        temp_test_column = []
+
+        for col in train_file.columns:
+            temp_train_column.append(col)
+
+        test_file = pd.read_csv(path_string_file_test)
+
+        for col in test_file.columns:
+            temp_test_column.append(col)
+
+        for col in range(len(temp_train_column) - 1):
+
+            if (temp_train_column[col] != temp_test_column[col]):
+
+                result = "matched"
+
+                return result
+
+    except Exception as err:
+
+        logging.error(err)
+
     return 
