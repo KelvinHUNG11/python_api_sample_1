@@ -1,0 +1,13 @@
+              precision    recall  f1-score   support
+
+       BERHI       1.00      1.00      1.00        42
+      DEGLET       1.00      1.00      1.00        62
+       DOKOL       1.00      1.00      1.00       130
+       IRAQI       1.00      1.00      1.00        47
+      ROTANA       1.00      1.00      1.00       106
+      SAFAVI       1.00      1.00      1.00       127
+       SOGAY       1.00      1.00      1.00        60
+
+    accuracy                           1.00       574
+   macro avg       1.00      1.00      1.00       574
+weighted avg       1.00      1.00      1.00       574

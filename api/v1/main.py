@@ -38,7 +38,7 @@ def train_model(path_string):
         train.drop_duplicates(keep=False, inplace=True)
 
         ##Default value, 20% dataset for validation; 80% dataset for training purpose
-        [train, test] = train_test_split( train, test_size=0.2, random_state=42,shuffle=True, stratify=train.Class)
+        [train, test] = train_test_split( train, test_size=0.2, random_state=42, shuffle=True, stratify=train.Class)
 
         pd.options.display.max_columns = None
         print("train[train.isna().any(axis=1)]:", train[train.isna().any(axis=1)])
@@ -53,7 +53,7 @@ def train_model(path_string):
 
         [X_train, X_test, y_train, y_test] = train_test_split( X, y, test_size=0.2, random_state=42,shuffle=True, stratify=y)
 
-        automl.fit(X_train, y_train, task="classification",metric='log_loss',time_budget=60)
+        automl.fit(X_train, y_train, task="classification",metric='log_loss',time_budget=5)
 
         ##Save the best model ever trained
         with open('automl.pkl', 'wb') as f:
@@ -67,8 +67,14 @@ def train_model(path_string):
         print("classification_report_train:", classification_report(y_train, automl.predict(X_train)))
         print("")
 
+        with open('classification_report_train.csv', 'w') as f:
+            f.write(str(classification_report(y_train, automl.predict(X_train))))
+
         print("classification_report_test:", classification_report(y_test, automl.predict(X_test)))
         print("")
+
+        with open('classification_report_test.csv', 'w') as f:
+            f.write(str(classification_report(y_test, automl.predict(X_test))))
 
         test_=test.drop('Class',axis=1)
         ##print("test_.head():", test_.head())
