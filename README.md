@@ -12,4 +12,9 @@ After pulling the project, please run the following in sequences in terminal
 
 ## Server calling procedure ##
 Step 1: To import the "Sample_api_call.postman_collection.json" under "postman_endpoint" into Postman
-Step 2: Click "Send" to call the sample API and get the responses 
+Step 2: In "body", add two keys which are "file" and "test_file", choose the cooresponding files from folder "dataset"
+Step 3: In "headers", add key "token" of value "password"
+Step 4: Click "Send" to call the sample API and get the responses 
+Step 5 (optional): 
+     5.1 Trigger endpoint "get_predicted_file" to get the training and testing reports OR 
+     5.2 Open your browser to type "http://localhost:1001/api/v1/get_predicted_file" to get the reports
